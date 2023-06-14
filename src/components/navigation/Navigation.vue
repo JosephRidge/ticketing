@@ -9,9 +9,33 @@
       <div id="route"><a href="">events</a></div>
       <div id="route"><a href="">about</a></div>
     </div>
+
+<!--  list rendering using v-for directive  -->
+<div v-for="(fruit,index) in fruits" :key="index">
+<!-- <div class="fruitItem">{{fruit}}</div> -->
+</div>
+
+<!--  list rendering using v-for directive tarageting object array  -->
+
+<div v-for="movie in movies" :key="movie.id">
+<!-- name -->
+<div class="fruitItem">{{movie.name}}</div>
+<!-- type -->
+<div class="fruitItem">{{movie.type}}</div>
+<!-- year of production -->
+<div class="fruitItem">{{movie.yearOfProduction === 2023?'current':movie.yearOfProduction}}</div>
+<!-- rating -->
+<!-- <div >
+  <div v-for="rating in movie.rating" :key="rating"  style="display: flex; ">
+    <svg style="width:20px; height:20px" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48"><path d="m323-205 157-94 157 95-42-178 138-120-182-16-71-168-71 167-182 16 138 120-42 178ZM233-80l65-281L80-550l288-25 112-265 112 265 288 25-218 189 65 281-247-149L233-80Zm247-355Z"/></svg>
+  </div></div> -->
+</div>
+
+
+
     <!-- props rendering -->
-    <div>{{ msg }}</div>
-    <button @click="alterColor">change text style</button>
+    <!-- <div>{{ msg }}</div>
+    <button @click="alterColor">change text style</button> -->
 
     <!--
    1. where ar gpipng to use class csss selector 
@@ -20,7 +44,7 @@
   3. Create a function to trigger the dynamic 
   nature
   -->
-    <div :id="nameOfIndividual">John Doe</div>
+    <!-- <div :id="nameOfIndividual">John Doe</div> -->
 
     <!-- Binding images  -->
     <!-- <img :src="imageOfLand"/> -->
@@ -28,22 +52,43 @@
 
     <!--  conditional rendering 
     v-if...v-else...v-else-if... -->
-<div v-if="imageOfCar">
+<!-- <div v-if="imageOfCar">
   <img :src="imageOfCar"/>
 </div>
-<div v-else> No Image found</div>
-
-<div v-show="imageOfCar">
-  <img :src="imageOfCar"/></div>
+<div v-else> No Image found</div> -->
 
 
+<!--  conditionally render based on age  -->
+ <!-- <div v-if="age===10">
+  <img src="https://images.pexels.com/photos/385997/pexels-photo-385997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+</div> -->
+ <!-- if condition one fails it checks this condition   -->
+<!-- <div v-else-if="age>=21">
+  <img src="https://images.pexels.com/photos/762911/pexels-photo-762911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+</div>
+<div v-else> No Image found</div>   -->
+
+<!-- conditional rendering using v-show -->
+<!-- <div v-show="age===10">
+  <img src="https://images.pexels.com/photos/385997/pexels-photo-385997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+</div> -->
+<!-- if condition one fails it checks this condition -->
+<!-- <div v-show="age>=21">
+  <img src="https://images.pexels.com/photos/762911/pexels-photo-762911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
+</div> -->
+<!-- <div v-else> No Image found</div> -->
+
+<!-- <div v-show="imageOfCar">
+  <img :src="imageOfCar"/></div> -->
 
 
 
 
-<button @click="increaseAge">add age</button>
+
+
+<!-- <button @click="increaseAge">add age</button>
 <button @click="descreaseAge">reduce Age</button>
-<div>{{age}}</div>
+<div>{{age}}</div> -->
     <!--  conditional rendering
 - conditionally displayoing elements 
 based on particular condiiotns  eg conept if...else...else ief -->
@@ -63,6 +108,31 @@ export default{
       nameOfIndividual:"nameofPerson",
       text:"bree",
       age:0,
+      movies:[
+        {
+          id:'GOT2005',
+          name:'Game Of Thrones',
+          rating:8,
+          yearOfProduction:2005,
+          type:'Fantacy'
+        },
+        {
+          id:'FS2023',
+          name:'Fast Saga',
+          rating:9,
+          yearOfProduction:2023,
+          type:'Action'
+        },
+        {
+          id:'VS2013',
+          name:'Vinland Saga',
+          rating:4,
+          yearOfProduction:2013,
+          type:'Anime'
+        },
+
+      ],
+      fruits:['apple','pineapple','watermelon','oranges','grapes','passion','kiwi'],
       logo:'logoStyle',
       imageOfCar:"",
       imageOfLand:"src/components/navigation/assets/images/land1.jpg"
@@ -136,6 +206,10 @@ export default{
 </script>
 <!-- style -->
 <style>
+.fruitItem{
+  margin-right:10px
+
+}
 button {
   background-color: #696969;
   color: black;
